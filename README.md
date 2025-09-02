@@ -1,69 +1,76 @@
-📂 Structure
+# 🛰️ Remote Sensing Utilities
 
-Tif Process/
+This repository provides a minimal toolkit for **GeoTIFF processing, spectral indices calculation, and machine learning classification**.  
+It is designed for **water color remote sensing and algal bloom detection**, but the functions can be adapted to other remote sensing tasks.
 
-Basic utilities for reading, writing, grouping, reprojecting, and clipping GeoTIFF files.
+---
 
-Band_indices.ipynb
+## 📁 Project Structure
 
-Functions to compute common spectral indices (NDVI, NDWI, EVI, etc.).
+```
+Remote_Sensing_Project/
+├── Tif Process/                  # Basic GeoTIFF utilities (read, clip, group, write)
+├── Band_indices.ipynb           # NDVI, NDWI, EVI, MNDWI, AWEI, etc.
+├── Machine_learning.ipynb       # Classifier training: RF, XGBoost, SVM
+├── predict_tif.ipynb            # Predict and export classified GeoTIFF maps
+├── GEE_Download.ipynb/.py       # Download data via Google Earth Engine (GEE)
+```
 
-Can be extended to water indices (MNDWI, AWEI, GNDVI).
+---
 
-Machine_learning.ipynb
+## ⚙️ Features
 
-Machine learning pipeline for training classifiers (RF, XGBoost, SVM).
+- 📦 **GeoTIFF I/O**: Grouping, clipping, reprojection, multi-band write.
+- 🌱 **Spectral Indices**: NDVI, NDWI, EVI, MNDWI, AWEI, GNDVI, etc.
+- 🤖 **Machine Learning**: Support for RF / XGBoost / SVM with evaluation:
+  - Accuracy, Precision, Recall, F1-score, Kappa.
+- 🛰 **Prediction Mapping**: Apply trained model to new satellite images.
+- 🌍 **GEE Integration**: For time-series image processing & downloading.
 
-Includes feature normalization, model training, evaluation (Accuracy, Precision, Recall, F1, Kappa), and saving models.
+---
 
-predict_tif.ipynb
+## 🔧 Requirements
 
-Apply trained ML models to GeoTIFF images.
+```bash
+Python >= 3.8
 
-Save prediction results as new GeoTIFF maps.
+# Core dependencies
+conda install -c conda-forge \
+    gdal numpy pandas scikit-learn xgboost matplotlib joblib geemap 
+```
 
-Google_earth_Engine.ipynb / .py
+---
 
-Use Google Earth Engine (GEE) for remote sensing image processing and downloading (e.g., Landsat/Sentinel imagery).
+## 🌍 Google Earth Engine (GEE) Integration
 
-Support advanced operations such as monthly/annual average composites, cloud masking, spectral index calculation, etc.
+This toolkit supports using **Google Earth Engine (GEE)** via the `geemap` Python API.
 
-🔧 Requirements
+Typical remote sensing workflows supported:
 
-Python 3.8+
+- ✅ Query and filter Landsat/Sentinel images
+- ✅ Apply cloud and snow masking
+- ✅ Compute vegetation and water indices (NDVI, FAI, MNDWI, etc.)
+- ✅ Export monthly or annual composites
+- ✅ Download as GeoTIFF with projection, resolution control
 
-numpy, pandas, matplotlib
+📘 **Python GEE Setup**: [https://geemap.org/](https://geemap.org/)
 
-scikit-learn
+---
 
-xgboost
+## 📌 Note
 
-joblib
+This repository offers a general framework.  
+Users can **extend or customize functions** for their own use cases, such as:
 
-GDAL
+- Adding new spectral indices
+- Custom preprocessing pipelines
+- Annual/monthly statistical compositing
+- Cloud/GAP filtering for time series
 
-geemap (for Google Earth Engine support)
+---
 
-Install with conda (recommended):
+## 📂 Source
 
-conda install -c conda-forge gdal numpy pandas scikit-learn xgboost matplotlib joblib geemap
+Other related code and documentation can be found at:  
+🔗 [https://github.com/hanzhang2813/Harmful-Algal-Blooms](https://github.com/hanzhang2813/Harmful-Algal-Blooms)
 
-🌍 Google Earth Engine (GEE) Integration
-
-This repository includes tools for downloading and processing satellite imagery directly via Google Earth Engine
-, using the Python-based geemap API.
-
-Typical supported workflows:
-
-Filtering by date and region
-
-Cloud/snow masking
-
-Computing monthly or annual composites
-
-Deriving spectral indices (NDVI, FAI, etc.)
-
-Exporting GeoTIFFs with specific projection and scale
-
-📘 For installation and detailed GEE usage in Python, refer to the official geemap documentation
-.
