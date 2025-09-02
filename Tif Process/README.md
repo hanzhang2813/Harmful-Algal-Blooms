@@ -25,11 +25,11 @@ The code is minimal and easy to adapt for different projects in remote sensing a
 - Group `.tif` files into subfolders based on year extracted from the filename.
 - Example:
 - input/
-- 2020_image1.tif
-- 2021_image2.tif
+  - 2020_image1.tif
+  - 2021_image2.tif
 - output/
-- 2020/2020_image1.tif
-- 2021/2021_image2.tif
+  - 2020/2020_image1.tif
+  - 2021/2021_image2.tif
 
 
 ### 4. `clip_tif.ipynb`
@@ -42,4 +42,5 @@ The code is minimal and easy to adapt for different projects in remote sensing a
 ## 🔧 Requirements
 Install via conda (recommended):
 ```bash
+
 conda install -c conda-forge gdal numpy
